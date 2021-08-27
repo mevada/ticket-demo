@@ -1,0 +1,25 @@
+<h2>find!!</h2>
+<table class="table table-bordered">
+			
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Category name</th>
+					<th>Status</th>	
+				</tr>
+			</thead>
+
+			<tbody>
+				   <% @search.each do |ticket|%>
+				   <tr>
+						<td><%= ticket.title %></td>
+						<td><%= ticket.description %></td>
+						<td><%= ticket.category.name %></td>
+						<td><%= ticket.status %></td>
+				   </tr>		
+				   <% end %>
+
+			</tbody>	
+		</table>
+		<%= link_to "back", tickets_path %>

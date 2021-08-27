@@ -1,0 +1,88 @@
+
+<html>
+
+<body>
+	<div class="container">
+		<h2>Tickets list</h2>
+		<%=  form_with  url: '/search', method: :get  do |form| %>
+		<%#=  form_with  model: @search  do |form| %>
+			<%= form.label :title,"serach"%>
+			<%= form.text_field :title %>
+			<%= form.submit %>
+    	<% end %>
+    	<br>
+    	<br>
+		<table class="table table-bordered">
+			
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Category name</th>
+					<th>Status</th>	
+				</tr>
+			</thead>
+
+			<tbody>
+				   <% @tickets.pub.each do |ticket|%>
+				   <tr>
+					<td><%= link_to ticket.title , ticket %></td>
+					<td><%= ticket.description %></td>
+					<td><%= ticket.category.name %></td>
+					<td><%= ticket.status %></td>
+				   </tr>		
+				   <% end %>
+
+			</tbody>	
+		</table>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Category name</th>
+					<th>Status</th>	
+				</tr>
+			</thead>
+			<tbody>
+				   <% @tickets.pri.each do |ticket|%>
+				   <tr>
+					<td><%= link_to ticket.title , ticket %></td>
+					<td><%= ticket.description %></td>
+					<td><%= ticket.category.name %></td>
+					<td><%= ticket.status %></td>
+				   </tr>		
+				   <% end %>
+
+			</tbody>	
+		</table>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Category name</th>
+					<th>Status</th>	
+				</tr>
+			</thead>
+			<tbody>
+				   <% @tickets.arc.each do |ticket|%>
+				   <tr>
+					<td><%= link_to ticket.title , ticket %></td>
+					<td><%= ticket.description %></td>
+					<td><%= ticket.category.name %></td>
+					<td><%= ticket.status %></td>
+				   </tr>		
+				   <% end %>
+
+			</tbody>	
+		</table>
+		<%= link_to "create_ticket", new_ticket_path %><br>
+		<%= link_to "back", root_path %>
+	</div>
+<%= will_paginate @tickets %>
+</body>
+</html>
+
+
+

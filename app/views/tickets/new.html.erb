@@ -1,0 +1,38 @@
+
+<div class="container">
+	<h2>Add ticket</h2>
+<%= form_with model: @ticket ,class: "form-horizontal" do |form|%>
+	
+	<%= form.hidden_field :user_id, value: current_user.id %>
+	<div class="form-group">
+		<%= form.label :title , class: "control-label col-sm-2" %><br>
+		<%= form.text_field :title, class: "col-sm-10" , placeholder: "enter title" %>
+		<% @ticket.errors.full_messages_for(:title).each do |message| %>
+     		 <div><%= message %></div>
+    	<% end %>
+	</div>
+	<div class="form-group">
+		<%= form.label :description ,class: "control-label col-sm-2"%><br>
+		<%= form.text_area :description , class: "col-sm-10" ,placeholder: "enter description" %>
+		<% @ticket.errors.full_messages_for(:description).each do |message| %>
+     		 <div><%= message %></div>
+    	<% end %>
+	</div>
+	<div class="form-group">
+		<%= form.label :status,class: "control-label col-sm-2" %>
+		<%= form.select :status , ['public','private','archive'] , selected: 'public' ,class: "col-sm-10" ,class: "dropdown-menu"%>
+	</div>
+	<div class="form-group">
+		<%= form.label :category_id,class: "control-label col-sm-2" %>
+		<%= form.select :category_id, options_for_select(Category.all.map{|c| [c.name, c.id]}) ,class: "col-sm-10" %>
+	</div>
+	<div>
+		
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<%= form.submit%>
+		</div>
+	</div>
+<% end %>
+</div>

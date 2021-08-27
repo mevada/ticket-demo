@@ -1,0 +1,43 @@
+
+
+<html>
+<body>
+<div class="container">
+	<h2>Tickets details</h2>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Category name</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= @ticket.title %></td>
+				<td><%= @ticket.description %></td>
+				<td><%= @ticket.category.name %></td>			
+				<td><%= @ticket.status %></td>
+			</tr>
+		</tbody>
+
+		
+	</table>
+<li><%= link_to "update", edit_ticket_path %></li>
+<li><%= link_to "Delete", ticket_path(@ticket), method: :delete, data: {confirm: "Are you sure?"} %></li>
+
+
+<%= link_to "Back" , tickets_path %>
+
+
+</div>
+</body>	
+</html>
+
+
+
+
+
+
+
