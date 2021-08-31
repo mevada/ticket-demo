@@ -7,12 +7,14 @@
 	
 	<% if user_signed_in? %>
 		<b>Welcome!</b> <%= current_user.first_name %>
-	
+	 	
+	 	
 		<h2>details</h2>
 		
 		<ul>
 			<%= link_to "Tickets", tickets_path %><br>	
-			<%= link_to "categories", categories_path %>
+			<%= link_to "categories", categories_path %><br>
+			<%= link_to "Blog" , blogs_path %>
 		
 		</ul>
 	<% else %>
@@ -22,3 +24,5 @@
 	<% end %>
 </header>
 </body>
+
+		

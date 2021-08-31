@@ -16,10 +16,12 @@ Rails.application.routes.draw do
   
   resources :tickets 
   resources :categories
+  resources :blogs
 
   resources :examples
 
   get "/search", to:"tickets#search"
+  #get "/blog", to:"blogs#index"
   
 
   #resources :cates

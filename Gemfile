@@ -61,3 +61,4 @@ gem "twitter-bootstrap-rails"
 gem "jquery-rails"
 gem 'activeadmin'
 gem 'will_paginate', '~> 3.3.0'
+gem "paperclip", "~> 6.1.0"

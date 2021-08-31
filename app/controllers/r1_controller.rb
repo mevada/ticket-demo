@@ -6,6 +6,10 @@ class R1Controller < ApplicationController
 		#render plain: "login!!"
 		#render body: "raw"
 		#@r1 = current_user.users.first_name
+		#@user = current_user.users.avatar
 
 	end	
+
+
+
 end
