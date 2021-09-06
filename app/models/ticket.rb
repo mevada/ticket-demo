@@ -9,4 +9,5 @@ class Ticket < ApplicationRecord
 	scope :pri, ->{where(status: 'private')}
   	scope :arc, ->{where(status: 'archive')}
   	#self.per_page = 3
+  	#scope :pub, where(status: 'public')
 end

@@ -7,20 +7,45 @@ class TicketsController < ApplicationController
 
 	
 	def index
+		#@tickets = current_user.tickets.paginate(page: params[:page], per_page: 2)
 		#@tickets = current_user.tickets
 		#@tickets = current_user.tickets.paginate(page: params[:page])
-		@tickets = current_user.tickets.paginate(page: params[:page], per_page: 2)
 		#@tickets = current_user.tickets.page(params[:page]).order('created_at DESC')
-		
-		p "====================="
-		p @tickets
 		#@posts = Post.paginate(page: params[:page])
-
 		#@t1 = Ticket.where(status: 'public')
-	
 		#@tickets2 = Ticket.where(user_id: current_user.id)
 		#p @tickets2
     	#@tickets = Ticket.all
+		
+
+
+    	if params[:title].present?
+    		@tickets = current_user.tickets.where(title: params[:title]).paginate(page: params[:page], per_page: 2)	
+    		unless @tickets.present?
+    			@tickets = current_user.tickets.paginate(page: params[:page], per_page: 2)		 	
+    		end 
+    	else
+    		@tickets = current_user.tickets.paginate(page: params[:page], per_page: 2)	
+    	end	
+
+    	p @tickets
+
+
+ 	 #  	@tickets = current_user.tickets.paginate(page: params[:page], per_page: 2)
+    #	if params[:title].present?
+    #		@tickets = current_user.tickets.where(title: params[:title]).paginate(page: params[:page], per_page: 2)
+    #	end	
+	end	
+
+	def search
+		p "###+++++++++"
+		#@search = Ticket.where(['title LIKE?',"%#{params[:title]}%"])
+		@search = current_user.tickets.where(title: params[:title])
+		if @search.present?
+			render :search
+		else
+	    	redirect_to tickets_path
+		end	
 	end	
 
 	def show
@@ -62,16 +87,7 @@ class TicketsController < ApplicationController
   	end  
 
   	
-	def search
-		p "###+++++++++"
-		#@search = Ticket.where(['title LIKE?',"%#{params[:title]}%"])
-		@search = Ticket.where(title: params[:title])
-		if @search.present?
-			render :search
-		else
-	    	redirect_to tickets_path
-		end	
-	end	
+	
 
 
 

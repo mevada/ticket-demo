@@ -5,16 +5,20 @@
 	<div class="container">
 		
 		<h2>Tickets list</h2>
-		<%=  form_with  url: '/search', method: :get  do |form| %>
+		<%=  form_with  url: '/tickets', method: :get  do |form| %>
 		<%#=  form_with  model: @search  do |form| %>
 			<%= form.label :title,"serach"%>
 			<%= form.text_field :title %>
-			<%= form.submit %>
+			<%= form.submit "SUBMIT", class: "submit_button" %>
     	<% end %>
     	<br>
     	<br>
+   
+
+   <% if @tickets.present? %>
 		<table class="table table-bordered">
-			
+			<h3>Public</h3>
+
 			<thead>
 				<tr>
 					<th>Title</th>
@@ -36,7 +40,10 @@
 
 			</tbody>	
 		</table>
+		
+
 		<table class="table table-bordered">
+			<h3>Private</h3>
 			<thead>
 				<tr>
 					<th>Title</th>
@@ -58,6 +65,7 @@
 			</tbody>	
 		</table>
 		<table class="table table-bordered">
+			<h3>Archive</h3>
 			<thead>
 				<tr>
 					<th>Title</th>
@@ -78,6 +86,12 @@
 
 			</tbody>	
 		</table>
+
+		<% else %>
+			<h3>not found!!</h3>
+		<% end %>	
+
+
 		<%= link_to "create_ticket", new_ticket_path %><br>
 		<%= link_to "back", root_path %>
 	</div>

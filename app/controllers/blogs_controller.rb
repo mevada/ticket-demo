@@ -2,9 +2,11 @@ class BlogsController < ApplicationController
 	before_action :authenticate_user!
 	
 	def index
-		@blogs = current_user.blogs
-		
+		#@blogs = current_user.blogs.order(:title)
+		#@blogs = current_user.blogs.where(description: "abcd")
+		#@blogs = current_user.blogs.where(user_id: current_user.id)
 		#@blogs = Blog.all
+		@blogs = current_user.blogs
 	end
 
 
@@ -39,6 +41,12 @@ class BlogsController < ApplicationController
     	end
 	end	
 
+	def destroy
+	    @blog = Blog.find(params[:id])
+	    @blog.destroy
+
+    	redirect_to blogs_path
+  	end 
 
 	private
 

@@ -14,13 +14,34 @@ Rails.application.routes.draw do
   root "r1#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
-  resources :tickets 
+
+
+  
+
+  #resources :tickets do
+   # collection do
+    #  get :new
+    #end  
+  #end  
+  #end
+
+
+
+  resources :tickets
   resources :categories
   resources :blogs
+  
+  resources :products
+  resources :employees
+  resources :pictures
 
   resources :examples
 
   get "/search", to:"tickets#search"
+  #resources :search do
+   # get :search, on: :collection
+  #end  
+
   #get "/blog", to:"blogs#index"
   
 

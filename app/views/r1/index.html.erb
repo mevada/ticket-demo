@@ -6,15 +6,18 @@
 <header>
 	
 	<% if user_signed_in? %>
-		<b>Welcome!</b> <%= current_user.first_name %>
+		<h4><b>Welcome!</b> <%= current_user.first_name %></h4>
 	 	
 	 	
-		<h2>details</h2>
-		
+				
 		<ul>
-			<%= link_to "Tickets", tickets_path %><br>	
-			<%= link_to "categories", categories_path %><br>
-			<%= link_to "Blog" , blogs_path %>
+			<h2><%= link_to "Tickets", tickets_path %><br></h2>	
+			<h2><%= link_to "categories", categories_path %><br></h2>
+			<h3><%= link_to "Blog" , blogs_path %></h3>
+			<h3><%= link_to "Product" , products_path %><br></h3>
+			<h3><%= link_to "Employee" , employees_path %></h3>
+
+			<h3><%= link_to "picture" , pictures_path %></h3>
 		
 		</ul>
 	<% else %>

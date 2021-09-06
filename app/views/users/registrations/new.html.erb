@@ -4,12 +4,15 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :avatar ,"attach photo " %><br />
-    <%= f.file_field :avatar %><br>
-    <%#= f.submit %>
-  </div>
+    
 
-  <%= image_tag @user.avatar_url(:thumb) %>
+    <%= f.label :avatar ,"attach file" %><br />
+    <%= f.file_field :avatar %><br>
+       
+
+   </div>
+   <%#= image_tag :avatar ,if f.avatar.present? %>
+  <%#= image_tag f.object.avatar if f.object.avatar.attached? %>
 
   <div class="field">
     <%= f.label :first_name %><br />
