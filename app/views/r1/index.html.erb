@@ -1,14 +1,14 @@
 
 
 <body>
-
+ <%= image_tag "spinner.gif" ,style: "display: none;", class: "r1-spinner" ,height: "100"%>
 
 <header>
-	
+<div >	
 	<% if user_signed_in? %>
 		<h4><b>Welcome!</b> <%= current_user.first_name %></h4>
 	 	
-	 	
+	 	<a href="#" onmouseover="this.style.color='#990000';event.preventDefault();">Paint it red</a>
 				
 		<ul>
 			<h2><%= link_to "Tickets", tickets_path %><br></h2>	
@@ -25,7 +25,6 @@
 			<%= link_to "sign in" , new_user_session_path %>
 		</ul>	
 	<% end %>
+</div>
 </header>
 </body>
-
-		

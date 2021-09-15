@@ -27,7 +27,24 @@ Rails.application.routes.draw do
 
 
 
-  resources :tickets
+  #resources :tickets
+
+  get "/ticket/public", to:"tickets#public"
+  get "/ticket/private", to:"tickets#private"
+  get "/ticket/archive", to:"tickets#archive"
+  get "/tickets/:id", to:"tickets#show", as: 'ticket'
+  get "/tickets/:id/edit", to:"tickets#edit" , as: 'ticket_edit'
+  put "/tickets/:id", to:"tickets#update" ,as: 'ticket_update'   
+  delete "/tickets/:id", to:"tickets#destroy" , as: 'ticket_delete'  
+  get "/ticket/new" , to:"tickets#new" 
+  post "/ticket", to:"tickets#create" 
+  
+  resources :tickets, only: [:index]  do
+    collection do
+      get :archive
+    end    
+  end
+
   resources :categories
   resources :blogs
   

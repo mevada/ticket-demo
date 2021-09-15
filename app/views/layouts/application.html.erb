@@ -48,12 +48,16 @@
         <a class="navbar-brand" href="#">TicketDemo</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
+            
             <% if user_signed_in? %>
-             
               <li><%= link_to "Edit profile", edit_user_registration_path  %></li>
+              <% if controller_name == 'tickets' %>
+                <li><%= link_to "public", ticket_public_path  %></li>
+                <li><%= link_to "private", ticket_private_path  %></li>
+                <li><%= link_to "archive", ticket_archive_path  %></li>
+              <% end %>
               <li><%= link_to "sing out", destroy_user_session_path , method: :get %></li>
-
+                
             <% end %>
           </ul>
           <% if user_signed_in? %>

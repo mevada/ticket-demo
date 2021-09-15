@@ -1,0 +1,14 @@
+<h2>Employee list</h2>
+
+<ul>
+	
+	<% @employees.each do |employee| %>
+	<li>
+		<%= link_to employee.name , employee %>
+		<%#= link_to "create picture" , new_picture_path(employee: employee.id) %><br>
+	</li>
+	<% end %>
+</ul>
+
+<%= link_to "create employee" ,new_employee_path %><br>
+<%= link_to "Back" , root_path %>

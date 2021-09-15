@@ -10,4 +10,6 @@ class Ticket < ApplicationRecord
   	scope :arc, ->{where(status: 'archive')}
   	#self.per_page = 3
   	#scope :pub, where(status: 'public')
+
+  	has_many_attached :images
 end

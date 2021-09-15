@@ -1,0 +1,11 @@
+<h4>show product</h4>
+
+<li>
+	<h5><b>name:</b><%= @product.name %></h5>
+
+	<%= @product.pictures.each do  |r| %>
+	<h5><b>picture name:</b><%= r.name %></h5>
+	<% end -%>
+	
+</li>
+<%= link_to "back" , products_path %>

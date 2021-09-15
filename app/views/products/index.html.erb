@@ -1,0 +1,17 @@
+<h2>Product list</h2>
+
+<ul>
+	
+	<% @products.each do |product| %>
+	<li>
+		<%= link_to product.name , product %>
+		<%= link_to "create picture" , new_picture_path(product_id: product.id) %><br>
+	
+	</li>
+	
+		
+	<% end %>
+</ul>
+
+<%= link_to "create product" ,new_product_path %><br>
+<%= link_to "Back" , root_path %>

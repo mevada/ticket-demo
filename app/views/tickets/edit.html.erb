@@ -1,5 +1,5 @@
 
-<%= form_with model: @ticket , class: "form-inline" do |form| %>
+<%= form_with model: @ticket, method: :put , class: "form-inline" do |form| %>
 	<div class="form-group">
 		<%= form.label :title  %><br>
 		<%= form.text_field :title %>

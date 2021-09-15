@@ -1,5 +1,6 @@
 
 
+
 <html>
 <body>
 <div class="container">
@@ -11,6 +12,7 @@
 				<th>Description</th>
 				<th>Category name</th>
 				<th>Status</th>
+				<th>Image</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -19,13 +21,22 @@
 				<td><%= @ticket.description %></td>
 				<td><%= @ticket.category.name %></td>			
 				<td><%= @ticket.status %></td>
+				<td></td>
+				
 			</tr>
 		</tbody>
 
 		
 	</table>
-<li><%= link_to "update", edit_ticket_path %></li>
-<li><%= link_to "Delete", ticket_path(@ticket), method: :delete, data: {confirm: "Are you sure?"} %></li>
+	
+	<% @ticket.images.each do |image|%>
+	 <%= image_tag(url_for(image)) %>
+ |<% end %>
+
+ <%#= image_tag(@ticket.images%>
+
+<li><%= link_to "update", ticket_edit_path(@ticket) %></li>
+<li><%= link_to "Delete", ticket_delete_path(@ticket), method: :delete, data: {confirm: "Are you sure?"}  %></li>
 
 
 <%= link_to "Back" , tickets_path %>

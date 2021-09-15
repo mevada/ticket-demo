@@ -1,0 +1,31 @@
+
+<h3>Create Employee</h3>
+
+
+
+<%= form_with model: @employee do |form|%>
+	<div>
+		<%= form.label :name , "employee name" %><br>
+		<%= form.text_field :name %>
+		
+	</div>
+
+	<%= form.fields_for :pictures do |picture| %>
+	<div>	
+		<%= picture.label :name ,"picture name"%><br>
+    	<%= picture.text_field :name %>
+    </div>
+	<% end -%>
+	<%= form.fields_for :pictures do |picture| %>
+	<div>	
+		<%= picture.label :name ,"picture name"%><br>
+    	<%= picture.text_field :name %>
+    </div>
+	<% end -%>
+
+
+	<div>
+		<%= form.submit %>
+	</div>
+<% end %>
+<%= link_to "Back" , employees_path %>

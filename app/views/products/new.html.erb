@@ -1,0 +1,22 @@
+
+<h3>create Product</h3>
+<%= form_with model: @product do |form|%>
+	<div>
+		<%= form.label :name , "product name" %><br>
+		<%= form.text_field :name %>
+		
+
+    	<%= form.fields_for :pictures do |picture| %>
+		<div>	
+			<%= picture.label :name ,"picture name"%><br>
+    		<%= picture.text_field :name %>
+    	</div>
+		<% end -%>
+	
+	</div>
+	
+	<div>
+		<%= form.submit %>
+	</div>
+<% end %>
+<%= link_to "Back" , products_path %>

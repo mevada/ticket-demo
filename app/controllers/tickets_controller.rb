@@ -3,8 +3,24 @@ class TicketsController < ApplicationController
 	before_action :authenticate_user!
 	#before_action :user_signed_in?
 	#before_action :configure_permitted_parameters, if: :devise_controller?
-
-
+	def public
+		p "+++++"
+		#@tickets = Ticket.all
+		@tickets = current_user.tickets.where(status: 'public')
+		p controller_name
+	end	
+	def private
+		p "+++++"
+		#@tickets = Ticket.all
+		@tickets = current_user.tickets.where(status: 'private')
+		p controller_name
+	end	
+	def archive
+		p "+++++"
+		@tickets = current_user.tickets
+		#@tickets = current_user.tickets.where(status: 'archive')
+		p controller_name
+	end
 	
 	def index
 		#@tickets = current_user.tickets.paginate(page: params[:page], per_page: 2)
@@ -58,6 +74,7 @@ class TicketsController < ApplicationController
 	
 	def create
 		@ticket = Ticket.new(ticket_params)
+
 		#@ticket =current_user.tickets
 		if @ticket.save
 			redirect_to @ticket
@@ -80,7 +97,7 @@ class TicketsController < ApplicationController
 	end	
 
 	def destroy
-    	@ticket = Ticket. find(params[:id])
+    	@ticket = Ticket.find(params[:id])
     	@ticket.destroy
     	p "*********"
     	redirect_to root_path
@@ -102,7 +119,7 @@ class TicketsController < ApplicationController
 	private
 
 	def ticket_params
-		params.require(:ticket).permit(:title ,:description ,:status, :category_id, :user_id)
+		params.require(:ticket).permit(:title ,:description ,:status, :category_id, :user_id ,images: [])
 		#params.require(:ticket).permit(:title ,:description ,:status, :category_id).merge(user_id: current_user.id)
 	end	
 	

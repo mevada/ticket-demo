@@ -1,9 +1,15 @@
 
 <div class="container">
 	<h2>Add ticket</h2>
-<%= form_with model: @ticket ,class: "form-horizontal" do |form|%>
+<%= form_with model: @ticket, url:"/ticket", method: :post, class: "form-horizontal" do |form|%>
 	
 	<%= form.hidden_field :user_id, value: current_user.id %>
+
+	<%= form.label :images ,"attach file" %>
+	<%= form.file_field :images , :multiple => true%>
+		
+
+	
 	<div class="form-group">
 		<%= form.label :title , class: "control-label col-sm-2" %><br>
 		<%= form.text_field :title, class: "col-sm-10" , placeholder: "enter title" %>

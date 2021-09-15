@@ -1,0 +1,28 @@
+
+<html>
+<body>
+  
+	<h2>Private</h2>
+	<table class="table table-bordered" border="2" width="100">
+		<thead>
+			<tr>
+				<th>Ticket name</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @tickets.each do |ticket| %>
+			<tr>
+				<td><%= ticket.title %></td>
+				<td><%= ticket.status %></td>
+			</tr>
+			<% end %>
+		</tbody>
+		
+	</table>  	
+</body>
+</html>
+
+
+
+<%= link_to "Back" , tickets_path %>

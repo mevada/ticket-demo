@@ -1,0 +1,12 @@
+<h3>show employee details</h3>
+
+
+<li>
+	<h5><b>employee name:</b><%= @employee.name %></h5>
+
+	<%= @employee.pictures.each do  |r| %>
+	<h5><b>picture name:</b><%= r.name %></h5>
+	<% end -%>
+	
+</li>
+<%= link_to "back" , employees_path %>
