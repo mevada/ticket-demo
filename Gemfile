@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -43,6 +45,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+gem "letter_opener", :group => :development
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
@@ -61,6 +65,6 @@ gem "twitter-bootstrap-rails"
 gem "jquery-rails"
 gem 'activeadmin'
 gem 'will_paginate', '~> 3.3.0'
-
-
+gem "mysql2"
+gem 'rexml', '~> 3.2', '>= 3.2.4'
 
