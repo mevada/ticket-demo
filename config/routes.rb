@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
  
+  mount ActionCable.server => '/cable'
+
+
+  # root 'rooms#show'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
  

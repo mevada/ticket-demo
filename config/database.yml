@@ -5,24 +5,30 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: postgres
+  username: root
+  password: root
   host: localhost
 
 development:
   <<: *default
-  database: tk_dev
+  database: tk_dett
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: tk_test
+  database: tk_tevv
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: production
+primary:
+  <<: *default
+  database: my_primary_database
+primary_replica:
+  <<: *default
+  database: my_primary_replica_database

@@ -1,15 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
-  subject { Ticket.new(title: "book ticket!") }
+  subject { described_class.new}
 
   it "title should be present" do
-  	subject.title = nil
-  	expect(subject).to_not be_valid	
+  	subject.title = "book ticket"
+  	subject.description = "ticket book ticket ascc fd"
+  	subject.category = 1
+  	subject.user_id = 1
+  	expect(subject).to be_valid	
   end
 
-  it "description should be present" do
-  	subject.description = nil
-  	expect(subject).to_not be_valid	
-  end
 end

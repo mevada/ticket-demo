@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
     $("#new").on('click',function () {
     var category_name = $('#category_name').val();
     console.log(category_name)
@@ -7,7 +7,7 @@ $(document).ready(function(){
 		url: "/categories" ,
 		data: { category : {name: category_name}},
 	}).then(function() {
-  		alert('create category')
+  		alert('create category');
 	});
   });
 });

@@ -1,15 +1,13 @@
 
 
-<%= form_with model: @category do |form|%>
+<%= form_with model: @category, class: "abc" do |form|%>
 	<div>
 		<%= form.label :Name %><br>
-		<%= form.text_field :name %>
-		<% @category.errors.full_messages_for(:name).each do |message| %>
-     		 <div><%= message %></div>
-    	<% end %>
+		<%= form.text_field :name, class: 'autocomplete' %>
+		
 	</div>
 	
-	<div>
-		<%= form.submit %>
-	</div>
+	
+	<button class="new" id="new">Add</button>
+	
 <% end %>

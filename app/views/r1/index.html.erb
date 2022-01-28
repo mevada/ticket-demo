@@ -4,10 +4,21 @@
  <%= image_tag "spinner.gif" ,style: "display: none;", class: "r1-spinner" ,height: "100"%>
 
 <header>
-<div >	
+<div >
+
 	<% if user_signed_in? %>
 		<h4><b>Welcome!!</b> <%= current_user.first_name %></h4>
-	 	
+		
+		<a data-turbolinks="true">Disabled</a>
+		<div class="disabled" data-turbolinks="false">
+		  <a href="/">I'm disabled</a>
+		  <a href="/">I'm also disabled</a>
+		</div>
+		<div class="disabl" data-turbolinks="true">
+		  <a href="/">I'm disabled</a>
+		  <a href="/">I'm re-enabled</a>
+		</div>
+
 	 	<a href="#" onmouseover="this.style.color='#990000';event.preventDefault();">Paint it red</a>
 				
 		<ul>

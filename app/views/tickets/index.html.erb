@@ -2,6 +2,10 @@
 <%#= image_tag @user.avatar.url %>
 <body>
 	<div class="container">
+		<%= Ticket.first.private_call %><br>
+		<%= Ticket.first.protected_call %><br>
+		<%= Ticket.first.name_1 %><br>
+
 		
 		<h2>Tickets list</h2>
 		<%=  form_with  url: '/tickets', method: :get  do |form| %>
@@ -24,7 +28,8 @@
 					<th>Description</th>
 					<th>Category name</th>
 					<th>Status</th>
-					<th>images</th>	
+					<th>msg</th>
+						
 				</tr>
 			</thead>
 
@@ -35,33 +40,8 @@
 					<td><%= ticket.description %></td>
 					<td><%= ticket.category.name %></td>
 					<td><%= ticket.status %></td>
-					<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
- 						 Images
-				</button></td>
-				<div class="modal fade" id="exampleModal<%= ticket.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ticket images</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      	<% @tickets.each do |ticket|%>
-      		<%#= ticket.images %>
-        	<%= image_tag(url_for(ticket.images)) %>
-		<% end %>
-
-      </div>
-     	 <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-     </div>
-    </div>
-  </div>
-
+					<td><%= ticket.private_call %></td>
+				
 				   </tr>		
 				   <% end %>
 
@@ -125,7 +105,6 @@
 		<%= link_to "create_ticket", ticket_new_path %><br>
 		<%= link_to "back", root_path %>
 	</div>
-<%= will_paginate @tickets %>
 
 </body>
 </html>

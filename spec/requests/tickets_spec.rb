@@ -1,15 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe "Tickets", type: :request do
-  let(:user) { create(:user) }
+  # let(:user) { create(:user) }
+  it "create a ticket" do
+  	get "/ticket/new"
+  	expect(response).to render_template(:new)
+  	post "/tickets", :params => { ticket => {:title => "ahmedabad"}}
 
-  describe "index" do
-    it "assign all user tickets" do
-      get tickets_path
-      expect(assigns(:tickets)).to eq(ticket.all)
-      
-    end	
+  	expect(response).to redirect_to(assign(:ticket))
+  	follow_redirect!
 
-   
-  end
+  	expect(response).to render_template(:show)
+  	expect(response.body).to include("user create")
+  end	
+
+  it "does not render a different template" do
+  	get "tickets/new"
+  	expect(response).to_not render_template(:show)
+  end	
+
 end

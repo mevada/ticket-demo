@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
 	def index
-		@category = Category.paginate(page: params[:page], per_page: 2)
+		@category = Category.paginate(page: params[:page], per_page: 10)
 		#@category = Category.find(params[:id])
 	end	
 
@@ -18,11 +18,15 @@ class CategoriesController < ApplicationController
 
 	def create
 		@category = Category.new(category_params)
-		if @category.save
-			redirect_to categories_path
-		else
-			render :new	
-		end	
+		respond_to do |format|
+			if @category.save
+				format.html { redirect_to categories_path}
+				format.json { render :show, status: :created, location: @category }	
+			else
+				format.html { render :new }
+				format.json { render json: @category.errors, status: :unprocessable_entity }	
+			end
+		end
 	end	
 
 	def edit

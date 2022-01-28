@@ -36,6 +36,9 @@ class TicketsController < ApplicationController
 
 
     	if params[:title].present?
+    		@search = current_user.tickets.search(params[:title])
+		p @search
+		p "+++++++++++"
     		@tickets = current_user.tickets.where(title: params[:title]).paginate(page: params[:page], per_page: 2)	
     		unless @tickets.present?
     			@tickets = current_user.tickets.paginate(page: params[:page], per_page: 2)		 	
@@ -56,7 +59,9 @@ class TicketsController < ApplicationController
 	def search
 		p "###+++++++++"
 		#@search = Ticket.where(['title LIKE?',"%#{params[:title]}%"])
-		@search = current_user.tickets.where(title: params[:title])
+		@search = current_user.tickets.search(params[:title])
+		p @search
+		p "+++++++++++"
 		if @search.present?
 			render :search
 		else
@@ -74,13 +79,18 @@ class TicketsController < ApplicationController
 	
 	def create
 		@ticket = Ticket.new(ticket_params)
-
 		#@ticket =current_user.tickets
-		if @ticket.save
-			redirect_to @ticket
-		else
-			render :new	
-		end	
+	  	respond_to do |format|
+			if @ticket.save
+				TicketMailer.welcome_email(current_user).deliver_now
+				#TicketMailer.with(current_user: @user).welcome_email.deliver_later
+				format.html { redirect_to(@ticket, notice: 'ticket was successfully created.') }
+				format.json { render json: @ticket, status: :created, location: @ticket }
+			else
+				format.html { render action: 'new' }
+        		format.json { render json: @ticket.errors, status: :unprocessable_entity }
+			end	
+	    end
 	end	
 
 	def edit
