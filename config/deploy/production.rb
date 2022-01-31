@@ -12,8 +12,9 @@ server 'localhost', roles: %w{web app db}, :primary => true
 set :repo_url, "git@github.com:mevada/ticket-demo.git"
 set :branch, "main"
 set :ssh_options, {
- 
-  forward_agent: true
+  user: "ashvinaspire",
+  forward_agent: true,
+  keys: %w(~/.ssh/id_rsa.pub)
 }
 # role-based syntax
 # ==================
