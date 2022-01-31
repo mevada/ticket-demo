@@ -2,7 +2,7 @@
 lock "~> 3.16.0"
 
 
-set :deploy_to, "/home/ashvinaspire/projects/abc"
+set :deploy_to, "/home/ashvinaspire/projects/abc//#{fetch :application}"
 # set :rails_env, "production"
 set :whenever_identifier, -> {"ticket-demo"}
 set :whenever_variables, -> {"stage=#{fetch(:stage)}"}
@@ -12,6 +12,14 @@ set :rvm_ruby_version, 'ruby-3.0.1'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/assets","vendor/bundle"
+set :repo_url, "git@github.com:mevada/ticket-demo.git"
+set :branch, "main"
+set :ssh_options, {
+  user: "ashvinaspire",
+  forward_agent: true,
+  keys: [File.join(ENV["HOME"], ".ssh", "qa_plumslice_net_keypair.pem")]
+}
+append :linked_files, "config/master.key"
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"

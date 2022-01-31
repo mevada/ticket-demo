@@ -8,14 +8,8 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 
-server 'localhost', roles: %w{web app db}, :primary => true
-set :repo_url, "git@github.com:mevada/ticket-demo.git"
-set :branch, "main"
-set :ssh_options, {
-  user: "ashvinaspire",
-  forward_agent: true,
-  keys: %w(~/.ssh/id_rsa.pub)
-}
+server 'localhost', user: "ashvinaspire", roles: %w{web app db}, :primary => true
+
 # role-based syntax
 # ==================
 
